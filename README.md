@@ -16,41 +16,52 @@ This approach is particularly valuable for:
 
 ## Repository Contents
 
-- **Media Mix Optimization Report.pdf**: Executive summary and detailed findings in PDF format (accessible without running code)
-- **MMM Analysis.html**: Static HTML version of the analysis notebook (accessible without running code)
-- **MMM DataGenerator.html**: Static HTML version of the data generating notebook (accessible without running code)
-- **notebooks/Media Mix Optimization Report.ipynb**: Executive summary and detailed findings as a Jupyter notebook
-- **notebooks/MMM Analysis.ipynb**: The core analytical notebook containing all modeling steps and implementation
-- **notebooks/MMM DataGenerator.ipynb**: Utility notebook for generating the simulated marketing data used in the analysis
-
-## Project Overview
-
-This project implements a comprehensive media mix modeling approach to:
-
-1. Quantify the impact of marketing spend across TV, Digital, Radio, and Print channels
-2. Account for carryover effects (adstock) in each channel
-3. Model diminishing returns using Hill transformations
-4. Incorporate external factors like seasonality and economic conditions
-5. Optimize budget allocation to maximize either ROI or total sales impact
+- **Media Mix Optimization Report.pdf**: Executive summary and detailed findings for business users
+- **MMM Analysis.pdf**: Technical analysis with full implementation details and methodology
+- **MMM DataGenerator.pdf**: Documentation of the data generation process
+- **notebooks/**: Directory containing all Jupyter notebooks
+  - **Media Mix Optimization Report.ipynb**: Business-focused report with insights and recommendations
+  - **MMM Analysis.ipynb**: Core analytical notebook with model development and optimization
+  - **MMM DataGenerator.ipynb**: Utility notebook for generating the simulated marketing data
+- **data/**: Contains the dataset used in the analysis
+  - **MMM_data.csv**: Simulated marketing data with channel spend and sales
+- **images/**: Visualizations used in the report and analysis
 
 ## Key Findings
 
-- All marketing channels are currently operating beyond their optimal efficiency points
-- Significant opportunity exists to improve marketing ROI by reallocating budget
-- Two optimization strategies were developed:
-  - ROI Maximization: Reduces budget by 60% while increasing efficiency by 113%
-  - Sales Maximization: Maintains current budget while increasing impact by 18.6%
-- Digital and TV are the most effective channels, though both are currently overfunded
+Our analysis revealed several critical insights:
+
+- **Current marketing budget is significantly overallocated** - All channels are operating beyond their efficiency thresholds, resulting in suboptimal returns
+- **Two viable optimization strategies** were identified:
+  - **ROI Optimization**: Reduces budget by 60% (from $50,375 to $20,150 monthly) while increasing ROI by 113% (from 3.11 to 6.63)
+  - **Sales Maximization**: Maintains current budget while increasing sales by 18.6% (an additional $350,631 annually)
+- **Channel performance varies dramatically**:
+  - **TV and Digital** show positive ROI but operate far beyond their efficiency thresholds
+  - **Print** demonstrates surprisingly strong long-term impact due to high carryover effects
+  - **Radio** consistently underperforms and should be significantly reduced or eliminated
 
 ## Technical Approach
 
-The modeling methodology includes:
+The modeling methodology includes several sophisticated techniques:
 
-1. **Exploratory Data Analysis**: Examining historical spend patterns and sales trends
-2. **Adstock Modeling**: Capturing carryover effects with channel-specific decay rates
-3. **Diminishing Returns**: Implementing Hill transformations with optimized parameters
-4. **Ridge Regression**: Using regularized regression to handle collinearity
-5. **Cross-Validation**: Employing time series cross-validation for robust parameter estimation
+1. **Adstock Modeling**: We implemented channel-specific decay rates to capture carryover effects:
+   - TV: λ=0.60 (moderate persistence)
+   - Digital: λ=0.20 (short-lived effects)
+   - Print: λ=0.80 (strong persistence)
+   - Radio: λ=0.50 (moderate persistence)
+
+2. **Diminishing Returns**: We used Hill transformations with optimized parameters to model non-linear response curves:
+   - Each channel shows a unique diminishing returns pattern
+   - Parameters were optimized using Ridge regression with cross-validation
+
+3. **Background Variables**: The model incorporates external factors:
+   - Seasonal events (e.g., Christmas adds $14,564 to sales)
+   - Economic conditions (growth periods boost sales by $3,761)
+   - Long-term trends
+
+4. **Budget Optimization**: We developed two distinct allocation strategies:
+   - ROI Optimization focuses on efficiency, using only 40% of the current budget
+   - Sales Maximization prioritizes total impact, reallocating the full budget
 
 ## Getting Started
 
@@ -66,9 +77,9 @@ To run these notebooks:
    - seaborn
    - scipy
 3. Execute the notebooks in the following order:
-   1. MMM DataGenerator.ipynb (if you need to generate sample data)
-   2. MMM Analysis.ipynb
-   3. Media Mix Optimization Report.ipynb
+   1. MMM DataGenerator.ipynb (if you need to generate fresh sample data)
+   2. MMM Analysis.ipynb (to run the technical analysis)
+   3. Media Mix Optimization Report.ipynb (to view the business findings)
 
 ## Visualizations
 
