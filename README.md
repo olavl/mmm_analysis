@@ -18,6 +18,7 @@ This approach is particularly valuable for:
 
 - **Media Mix Optimization Report.pdf**: Executive summary and detailed findings in PDF format (accessible without running code)
 - **MMM Analysis.html**: Static HTML version of the analysis notebook (accessible without running code)
+- **MMM DataGenerator.html**: Static HTML version of the data generating notebook (accessible without running code)
 - **notebooks/Media Mix Optimization Report.ipynb**: Executive summary and detailed findings as a Jupyter notebook
 - **notebooks/MMM Analysis.ipynb**: The core analytical notebook containing all modeling steps and implementation
 - **notebooks/MMM DataGenerator.ipynb**: Utility notebook for generating the simulated marketing data used in the analysis
