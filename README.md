@@ -79,7 +79,7 @@ To run these notebooks:
 3. Execute the notebooks in the following order:
    1. MMM DataGenerator.ipynb (if you need to generate fresh sample data)
    2. MMM Analysis.ipynb (to run the technical analysis)
-   3. Media Mix Optimization Report.ipynb (to view the business findings)
+   3. Media Mix Optimization Report.ipynb is a fixed format report that will not update with new data
 
 ## Visualizations
 
